@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Pawel Krupa
+  description: NTP synchronization
+  company: Sointeractive
+  min_ansible_version: 1.6
+  platforms:
+   - name: EL
+     versions:
+       - all
+   - name: Ubuntu
+     versions:
+       - 14.04
+       - 16.04
+  galaxy_tags:
+   - ntp
+   - chrony
+
+#dependencies:
+#  - { role: username.common }
+
