@@ -1,0 +1,8 @@
+---
+# TODO auto checking if host is in:
+#  - Comarch network (ping everybody.comarch)
+#  - Hetzner (ping ntp1.hetzner.de)
+#  - Other
+# and set "location" variable to one of: comarch,hetzner,other
+
+

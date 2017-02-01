@@ -1,0 +1,22 @@
+---
+ntp_service: "ntpd"
+
+ntp_servers:
+  hetzner: 
+    - ntp1.hetzner.de
+    - ntp2.hetzner.com
+    - ntp3.hetzner.net
+  comarch:
+    - ntp.comarch.pl
+  other:
+    - 0.europe.pool.ntp.org
+    - 1.europe.pool.ntp.org
+    - 2.europe.pool.ntp.org
+    - 3.europe.pool.ntp.org
+
+location: other
+
+allowed_networks:
+  - "10/8"
+  - "192.168/16"
+  - "172.16/12"

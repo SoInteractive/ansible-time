@@ -1,0 +1,19 @@
+# {{ ansible_managed | default('Ansible-managed') }}
+
+{% for host in ntp_servers[location] %}
+pool {{ host }} iburst
+{% endfor %}
+
+driftfile {{ ntpd_driftfile }}
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+restrict 127.0.0.1
+restrict ::1
+restrict source notrap nomodify noquery

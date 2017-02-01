@@ -1,0 +1,27 @@
+---
+- name: ensure ntp package is absent
+  package: 
+    name: ntp
+    state: absent
+
+- name: Install chrony
+  package:
+    name: chrony
+#    name: ntp
+    state: latest
+
+- name: Set chrony configuration
+  template:
+    src: chrony.conf.j2
+    dest: "{{ chrony_conf }}"
+
+- name: Enable chrony service
+  service:
+#    name: ntpd
+    name: "{{ chrony_service_name }}"
+    state: restarted
+    enabled: yes
+
+- name: Force time synchronization
+  command: chronyc -a makestep
+

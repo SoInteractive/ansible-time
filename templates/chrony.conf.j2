@@ -1,0 +1,30 @@
+# {{ ansible_managed | default('Ansible-managed') }}
+
+{% for host in ntp_servers[location] %}
+server {{ host }} iburst
+{% endfor %}
+
+keyfile {{ chrony_keys }}
+
+commandkey 1
+
+driftfile {{ driftfile }}
+
+log tracking measurements statistics
+logdir {{ logdir }}
+
+maxupdateskew 200.0
+
+dumponexit
+
+dumpdir {{ dumpdir }}
+
+local stratum 10
+
+{% for network in allowed_networks %}
+allow {{ network }}
+{% endfor %}
+
+logchange 0.5
+
+rtconutc
