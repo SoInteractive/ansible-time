@@ -1,4 +1,4 @@
-# {{ ansible_managed | default('Ansible-managed') }}
+# {{ ansible_managed }}
 
 {% for host in ntp_servers[location] %}
 pool {{ host }} iburst
