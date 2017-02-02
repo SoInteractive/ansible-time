@@ -12,7 +12,7 @@
 - name: Set ntpd configuration
   template:
     src: ntp.conf.j2
-    dest: "{{ ntp_conf }}"
+    dest: "{{ ntpd_conf }}"
 
 - name: Stop service
   service: 
