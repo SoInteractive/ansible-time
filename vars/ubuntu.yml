@@ -5,7 +5,7 @@ chrony_driftfile: "/var/lib/chrony/chrony.drift"
 chrony_logdir: "/var/log/chrony"
 chrony_dumpdir: "/var/lib/chrony"
 
-ntpd_service_name: "ntpd"
+ntpd_service_name: "ntp"
 ntpd_conf: "/etc/ntp.conf"
 ntpd_driftfile: "/var/lib/ntp/ntp.drift"
 
