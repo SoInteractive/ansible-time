@@ -14,13 +14,13 @@
     src: ntp.conf.j2
     dest: "{{ ntpd_conf }}"
 
-- name: Stop service
-  service: 
-    name: "{{ ntpd_service_name }}"
-    state: stopped 
-
-- name: Force time synchronization
-  command: "ntpd -gq"
+#- name: Stop service
+#  service: 
+#    name: "{{ ntpd_service_name }}"
+#    state: stopped 
+#
+#- name: Force time synchronization
+#  command: "ntpd -gq"
 
 - name: Start and enable ntpd service
   service:

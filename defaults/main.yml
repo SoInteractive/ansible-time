@@ -1,13 +1,15 @@
 ---
 ntp_service: "ntpd"
 
+# Comarch NTP server sometimes doesn't respond by DNS
 ntp_servers:
-  hetzner: 
+  hetzner:
     - ntp1.hetzner.de
     - ntp2.hetzner.com
     - ntp3.hetzner.net
   comarch:
     - ntp.comarch.pl
+    - 91.227.212.73
   other:
     - 0.europe.pool.ntp.org
     - 1.europe.pool.ntp.org
