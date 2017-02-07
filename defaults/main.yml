@@ -16,6 +16,8 @@ ntp_servers:
     - 2.europe.pool.ntp.org
     - 3.europe.pool.ntp.org
 
+ntp_force_time_sync: False
+
 location: other
 
 allowed_networks:

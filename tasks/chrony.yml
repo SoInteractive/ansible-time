@@ -24,4 +24,5 @@
 
 - name: Force time synchronization
   command: chronyc -a makestep
+  when: ntp_force_time_sync
 
