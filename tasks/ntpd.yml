@@ -21,12 +21,12 @@
       state: stopped 
   
   - name: Force time synchronization
-    shell: "ntpd -gq"
-    register: sync_result
-    until: sync_result.rc == 0
-    retries: 10
-    delay: 5
-#    ignore_errors: yes
+    command: "timeout 15s ntpd -gq"
+#    register: sync_result
+#    until: sync_result.rc == 0
+#    retries: 10
+#    delay: 5
+    ignore_errors: yes
 
   when: ntp_force_time_sync
 
