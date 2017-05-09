@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-{% for host in ntp_servers[location] %}
+{% for host in time_servers[time_servers_location] %}
 server {{ host }} iburst
 {% endfor %}
 
@@ -21,7 +21,7 @@ dumpdir {{ dumpdir }}
 
 local stratum 10
 
-{% for network in allowed_networks %}
+{% for network in tiem_sync_networks %}
 allow {{ network }}
 {% endfor %}
 

@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-{% for host in ntp_servers[location] %}
+{% for host in time_servers[time_servers_location] %}
 pool {{ host }} iburst
 {% endfor %}
 

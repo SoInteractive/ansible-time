@@ -1,8 +1,10 @@
 ---
-ntp_service: "ntpd"
+time_zone: "Europe/Warsaw"
+
+time_service: "ntpd"
 
 # Comarch NTP server sometimes doesn't respond by DNS
-ntp_servers:
+time_servers:
   hetzner:
     - ntp1.hetzner.de
     - ntp2.hetzner.com
@@ -15,12 +17,11 @@ ntp_servers:
     - 1.europe.pool.ntp.org
     - 2.europe.pool.ntp.org
     - 3.europe.pool.ntp.org
+time_servers_location: other
 
-ntp_force_time_sync: no
+time_force_sync: no
 
-location: other
-
-allowed_networks:
+time_sync_networks:
   - "10/8"
   - "192.168/16"
   - "172.16/12"

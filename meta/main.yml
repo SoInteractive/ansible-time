@@ -3,7 +3,7 @@ galaxy_info:
   author: Pawel Krupa
   description: NTP synchronization
   company: Sointeractive
-  min_ansible_version: 1.6
+  min_ansible_version: 2.2
   platforms:
    - name: EL
      versions:

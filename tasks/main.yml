@@ -10,10 +10,12 @@
   tags:
     - always
 
-#- name: Set timezone #TODO
+- name: Set timezone
+  timezone:
+    name: "{{ time_zone }}"
 
 - include: chrony.yml
-  when: ntp_service == "chrony"
+  when: time_service == "chrony"
 
 - include: ntpd.yml
-  when: ntp_service == "ntpd"
+  when: time_service == "ntpd"
