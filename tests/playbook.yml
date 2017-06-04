@@ -1,4 +1,10 @@
 ---
 - hosts: all
+  pre_tasks:
+    - name: create clock file for CentOS
+      copy:
+        content: "ZONE=UTC"
+        dest: /etc/sysconfig/clock
+      when: ansible_os_family == 'RedHat'
   roles:
     - time
