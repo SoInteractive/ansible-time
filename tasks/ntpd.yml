@@ -1,25 +1,26 @@
 ---
 - name: ensure chrony package is absent
-  package: 
+  package:
     name: chrony
     state: absent
 
 - name: Install ntpd
   package:
     name: ntp
-    state: latest
+    state: present
 
 - name: Set ntpd configuration
   template:
     src: ntp.conf.j2
     dest: "{{ ntpd_conf }}"
+  notify: restart ntpd
 
 - block:
   - name: Stop service
-    service: 
+    service:
       name: "{{ ntpd_service_name }}"
-      state: stopped 
-  
+      state: stopped
+
   - name: Force time synchronization
     command: "timeout 15s ntpd -gq"
 #    register: sync_result
@@ -27,12 +28,9 @@
 #    retries: 10
 #    delay: 5
     ignore_errors: yes
+  when: time_force_sync
 
-  when: ntp_force_time_sync
-
-- name: Start and enable ntpd service
+- name: Ensure ntpd service is enabled
   service:
     name: "{{ ntpd_service_name }}"
-    state: restarted
     enabled: yes
-

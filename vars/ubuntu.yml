@@ -8,4 +8,3 @@ chrony_dumpdir: "/var/lib/chrony"
 ntpd_service_name: "ntp"
 ntpd_conf: "/etc/ntp.conf"
 ntpd_driftfile: "/var/lib/ntp/ntp.drift"
-

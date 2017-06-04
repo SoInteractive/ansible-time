@@ -1,6 +1,6 @@
 ---
 - name: ensure ntp package is absent
-  package: 
+  package:
     name: ntp
     state: absent
 
@@ -8,7 +8,7 @@
   package:
     name: chrony
 #    name: ntp
-    state: latest
+    state: present
 
 - name: Set chrony configuration
   template:
@@ -24,5 +24,4 @@
 
 - name: Force time synchronization
   command: chronyc -a makestep
-  when: ntp_force_time_sync
-
+  when: time_force_sync
