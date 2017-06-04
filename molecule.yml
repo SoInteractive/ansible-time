@@ -10,9 +10,7 @@ docker:
     - name: time-xenial
       image: ubuntu
       image_version: xenial
-    - name: time-centos
-      image: centos/systemd
-      image_version: latest
-      #privileged: true
-      cap_add:
-        - SYS_ADMIN
+#    - name: time-centos
+#      image: centos/systemd
+#      image_version: latest
+#      privileged: true
