@@ -2,8 +2,3 @@
 - hosts: all
   roles:
     - time
-  post_tasks:
-    - command: "journalctl -xe"
-      register: output
-    - debug:
-        var: output
