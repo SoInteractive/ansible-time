@@ -2,5 +2,5 @@
 - hosts: all
   roles:
     - time
-   post_tasks:
-     - command: "journalctl -xe"
+  post_tasks:
+    - command: "journalctl -xe"
