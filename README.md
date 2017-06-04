@@ -3,7 +3,7 @@
 Ansible Role: NTP sync
 ======================
 
-[![Build Status](https://ci.devops.sosoftware.pl/buildStatus/icon?job=SoInteractive/time/master)](https://ci.devops.sosoftware.pl/blue/organizations/jenkins/SoInteractive%2Fdocker/activity) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/ansible/role/18223.svg)](https://galaxy.ansible.com/SoInteractive/time/) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
+[![Build Status](https://ci.devops.sosoftware.pl/buildStatus/icon?job=SoInteractive/time/master)](https://ci.devops.sosoftware.pl/blue/organizations/jenkins/SoInteractive%2Ftime/activity) [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Ansible Role](https://img.shields.io/ansible/role/18223.svg)](https://galaxy.ansible.com/SoInteractive/time/) [![Twitter URL](https://img.shields.io/twitter/follow/sointeractive.svg?style=social&label=Follow%20%40SoInteractive)](https://twitter.com/sointeractive)
 
 Role checks if ntp or chrony is available and configures one to access NTP servers served by comarch, hetzner or europe pool
 
