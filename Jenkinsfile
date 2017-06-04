@@ -39,7 +39,7 @@ pipeline {
     }
   }
 
-  /*post {
+  post {
     always {
       sh 'molecule destroy'
     }
@@ -49,5 +49,5 @@ pipeline {
     failure {
       mattermostSend color: 'danger', message: "Job ${JOB_NAME} ${BUILD_NUMBER} has failed(<${BUILD_URL}|Open>)"
     }
-  }*/
+  }
 }
