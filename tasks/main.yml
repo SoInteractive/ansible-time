@@ -18,17 +18,24 @@
 
 # Workaroud for Ubuntu bug https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1554806
 - block:
+  - name: Check if /etc/localtime is a link
+    stat:
+      path: /etc/localtime
+    register: st
+
   - name: Remove /etc/localtime [Ubuntu workaround]
     file:
       dest: /etc/localtime
       state: absent
+    when: not st.stat.islnk
 
   - name: Link timezone to localtime [Ubuntu workaround]
     file:
       src: "/usr/share/zoneinfo/{{ time_zone }}"
       dest: /etc/localtime
       state: link
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
+    when: not st.stat.exists
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
 
 - name: Set timezone
   timezone:
