@@ -20,7 +20,7 @@
 - block:
   - name: Remove /etc/localtime [Ubuntu workaround]
     file:
-      dest: /etc/localhost
+      dest: /etc/localtime
       state: absent
 
   - name: Link timezone to localtime [Ubuntu workaround]
