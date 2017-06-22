@@ -16,26 +16,34 @@
     state: present
   when: ansible_os_family == "Debian"
 
+- name: Check if /etc/localtime is a link
+  stat:
+    path: /etc/localtime
+  register: st
+
+
 # Workaroud for Ubuntu bug https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1554806
 - block:
-  - name: Check if /etc/localtime is a link
-    stat:
-      path: /etc/localtime
-    register: st
+  - debug:
+      msg: "Path exists and is a symlink"
+    when: st.stat.islnk is defined and st.stat.islnk == True
+
+  - debug:
+      msg: "Link doesnt point to /usr/share/zoneinfo/Europe/Warsaw"
+    when: st.stat.islnk is defined and st.stat.lnk_source != "/usr/share/zoneinfo/{{ time_zone }}"
 
   - name: Remove /etc/localtime [Ubuntu workaround]
     file:
       dest: /etc/localtime
       state: absent
-    when: not st.stat.islnk
+    when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04") and ( st.stat.islnk is defined and st.stat.lnk_source != "/usr/share/zoneinfo/{{ time_zone }}" )
 
   - name: Link timezone to localtime [Ubuntu workaround]
     file:
       src: "/usr/share/zoneinfo/{{ time_zone }}"
       dest: /etc/localtime
       state: link
-    when: not st.stat.exists
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
+    when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04") and ( not st.stat.exists)
 
 - name: Set timezone
   timezone:
