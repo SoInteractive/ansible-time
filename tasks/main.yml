@@ -18,26 +18,26 @@
 
 # Workaroud for Ubuntu bug https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/1554806
 - block:
-
+    # use readlink instead of "stat" since stat resolve links
   - name: Check if /etc/localtime is a link
-    stat:
-      path: /etc/localtime
+    command: "readlink /etc/localtime"
     register: st
+    changed_when: False
 
   - name: Remove /etc/localtime [Ubuntu workaround]
     file:
       dest: /etc/localtime
       state: absent
-    when: (st.stat.lnk_source != "/usr/share/zoneinfo/{{ time_zone }}" ) and
-          (st.stat.lnk_source != "/usr/share/zoneinfo/Poland" )
+    when: st.stdout != "/usr/share/zoneinfo/{{ time_zone }}"
 
   - name: Link timezone to localtime [Ubuntu workaround]
     file:
       src: "/usr/share/zoneinfo/{{ time_zone }}"
       dest: /etc/localtime
       state: link
-    when: (not st.stat.exists)
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04")
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution_version == "16.04"
 
 - name: Set timezone
   timezone:
