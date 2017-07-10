@@ -23,6 +23,7 @@
     command: "readlink /etc/localtime"
     register: st
     changed_when: False
+    failed_when: st.rc > 1
 
   - name: Remove /etc/localtime [Ubuntu workaround]
     file:
