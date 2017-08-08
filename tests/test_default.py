@@ -14,16 +14,6 @@ def test_packages(Package):
             assert p.is_installed
 
 
-def test_directories(File):
-    present = [
-    ]
-    if present:
-        for directory in present:
-            d = File(directory)
-            assert d.is_directory
-            assert d.exists
-
-
 def test_files(File):
     present = [
         "/etc/ntp.conf"
