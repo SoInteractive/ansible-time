@@ -7,6 +7,10 @@ Ansible Role: NTP sync
 
 Role checks if ntp or chrony is available and configures one to access NTP servers served by comarch, hetzner or europe pool
 
+# :warning: IMPORTANT NOTICE
+
+THIS PROJECT IS ABANDONED. WE DO NOT ACCEPT ANY NEW ISSUES AND/OR PULL REQUESTS.
+
 Example usage
 -------------
 
